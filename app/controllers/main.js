@@ -78,7 +78,6 @@ function thanhToan(){
 
 function tinhTienGioHang(){
     var tongTien = 0;
-    // debugger;
     cartSP.map(function(SP){
         tongTien += SP.sanPham.price * SP.soLuong;
     });
