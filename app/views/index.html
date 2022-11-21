@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BT_API</title>
+
+
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+    
+<header>
+ 
+    <div class="header_Container container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+            <img src="../../assets/img/Globe_icon.svg.png" alt="">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Link</a>
+                </li>
+              
+              </ul>
+              
+              <a id="gioHang" href="#" data-toggle="modal" data-target="#exampleModal"><i class="fa-solid fa-cart-plus"></i></a>
+            </div>
+          </nav>
+
+          <!-- MODAL -->
+
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Giỏ Hàng</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                 
+                    
+                    <table class="table table-striped">
+                        <!-- <thead>
+                          <tr>
+                            <th scope="col">STT</th>
+                            <th scope="col">First</th>
+                            <th scope="col">Last</th>
+                            <th scope="col">Handle</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                          </tr>
+                        </tbody> -->
+                      </table>
+                      <div class="tongTien">
+                        <span>TỔNG TIỀN: </span>
+                        <span id="tongTien"></span>
+                        
+                      </div>
+
+                </div>
+                <div class="modal-footer">
+                  <button id="closeGioHang" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button id="saveGioHang" type="button" class="btn btn-primary" onclick=luuGioHang()>Save changes</button>
+                  <button type="button" class="btn btn-success" onclick=thanhToan()>Tiến hành thanh toán</button>
+
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+</header>
+<section class="product">
+    <div class="product_Container container">
+        <h3 class="title">Danh Sách Sản Phẩm</h3>
+        <div class="row">
+            <div class="col-4">
+                <!-- <button class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop"><i class="fa-solid fa-plus"></i> Thêm mới</button> -->
+            </div>
+            <!-- Button trigger modal -->
+            <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+                Launch static backdrop modal
+            </button> -->
+            
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Sản Phẩm</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- FORM -->
+                            <form>
+                                <div class="form-group">
+                                    <label for="tenSP">Tên sản phẩm</label>
+                                    <input class="form-control" id="tenSP">
+                                    <small id="tbTenSP" class="form-text text-muted thongBao"></small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="giaSP">Giá sản phẩm</label>
+                                    <input class="form-control" id="giaSP">
+                                    <small id="tbGiaSP" class="form-text text-muted thongBao"></small>
+                                    </div>
+                                <div class="form-group">
+                                    <label for="manHinhSP">Màn hình</label>
+                                    <input class="form-control" id="manHinhSP">
+                                    <small id="tbManHinhSP" class="form-text text-muted thongBao"></small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="camTruoc">Camera trước</label>
+                                    <input class="form-control" id="camTruoc">
+                                    <small id="tbCamTruocSP" class="form-text text-muted thongBao"></small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="camSau">Camera sau</label>
+                                    <input class="form-control" id="camSau">
+                                    <small id="tbcamSauSP" class="form-text text-muted thongBao"></small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="hinhAnhSP">Hình ảnh</label>
+                                    <input class="form-control" id="hinhAnhSP">
+                                    <small id="tbHinhAnhSP" class="form-text text-muted thongBao"></small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="moTaSP">Mô tả</label>
+                                    <input class="form-control" id="moTaSP">
+                                    <small id="tbMoTaSP" class="form-text text-muted thongBao"></small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="loaiSP">Loại sản phẩm</label>
+                                    <input class="form-control" id="loaiSP">
+                                    <small id="tbLoaiSP" class="form-text text-muted thongBao"></small>
+                                </div>
+
+    
+                    
+                            </form>
+
+
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Understood</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product_ContainerSearch col-8">
+                <form class="form-inline my-2 my-lg-0 justify-content-end">
+                    <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+                    <select class="custom-select">
+                        <option selected>Chọn nhãn hàng</option>
+                        <option value="all">Tất cả</option>
+                        <option value="samsung">Samsung</option>
+                        <option value="iphone">Iphone</option>
+         
+                      </select>
+                </form>
+            </div>
+        </div>
+
+        <div class="productList">
+            <!-- <div class="productList_Card">
+                <div class="topBar">
+                    <i class="fa-brands fa-apple"></i>
+                </div>
+                <div class="imgContainer">  
+                    <img src="https://cdn.tgdd.vn/Products/Images/42/114115/iphone-x-64gb-hh-600x600.jpg" alt="">     
+                </div>
+                <div class="botBar">
+                    <div class="cardProductName">Teen san pham</div>
+                    <div class="botBar_Left">
+                        <a tabindex="0" class="chiTietSanPham" role="button" data-toggle="modal" data-target="#exampleModalLabelChiTiet" title="Mô tả sản phẩm" data-content="And here's some amazing content. It's very engaging. Right?">Chi tiết</a>
+                        <div class="themGioHang"><i class="fa-solid fa-cart-plus"></i></div>
+                    </div>
+                </div>
+
+
+
+                <div class="modal fade" id="exampleModalLabelChiTiet" tabindex="-1" aria-labelledby="exampleModalLabelChiTiet" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title chi</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body-detail">
+
+
+                            <div class="productImg">
+                                <img src="https://cdn.tgdd.vn/Products/Images/42/114115/iphone-x-64gb-hh-600x600.jpg" alt="">
+                            </div>
+                            
+                            <div class="description">
+                                <div>Màn hình: jkjkj</div>
+                                <div>Camera trước: jkjkj</div>
+                                <div>Camera sau: jkjkj</div>
+                                <div>Mô tả: jkjkj</div>
+                                <div>Màn hình: jkjkj</div>
+                            </div>
+                            <div class="price">
+                                <p>$34566544</p>
+                            </div>
+
+
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div> -->
+
+            
+
+
+           
+            
+
+        </div>
+
+   
+       
+        
+    </div>
+    
+    
+   
+</section>
+
+
+    <!-- BOOTSTRAP -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- AXIOS -->
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+
+
+    
+
+    <script src="../models/SanPham.js"></script>
+    <script src="../services/SanPhamServices.js"></script>
+    <script src="../models/SanPhamCart.js"></script>
+    <script src="../controllers/main.js"></script>
+
+
+    <script>
+        $(function () {
+            $('[data-toggle="popover"]').popover()
+        })
+        $('.popover-dismiss').popover({
+            trigger: 'focus'
+        })
+    </script>
+
+    
+    
+</body>
+</html>
+
+
+
+
