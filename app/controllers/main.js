@@ -63,11 +63,8 @@ function hienThiGioHang(){
         `;
         index++;
         });
-        
-
     }
     document.querySelector(".modal-body .table-striped").innerHTML = hienThi;    
-   
 }
 
 function thanhToan(){
@@ -118,10 +115,8 @@ function themGioHang(id){
 
         sp = new SanPhamCart(productList[searchViTriProductList(id)], 1);
         cartSP.push(sp);
-       
     }
     setLocalStorage();
-    // getLocalStorage();
     alert("Thêm vào giỏ hàng thành công");
 }
 
@@ -135,9 +130,7 @@ function searchViTriProductList(id){
 function searchViTriSPGioHang(id){
     return cartSP.findIndex(function(sanPhamCart){
         return sanPhamCart.sanPham.id == id;
-    })
-
-    
+    });  
 }
 
 function hienThiSanPham(danhSachSanPham) {
