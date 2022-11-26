@@ -199,7 +199,6 @@ function hienThiSanPham(danhSachSanPham) {
 
 
 function filterNhanHang(){
-   
     var type = document.querySelector(".custom-select").value;
     if(document.querySelector(".custom-select").selectedIndex >= 2){
         var mang = productList.filter(function(item){
