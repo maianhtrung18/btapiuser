@@ -12,27 +12,27 @@ function ProductList() {
         // trả về đối tượng promise từ thư việ axios
         return axios({
             method: 'post',
-            url: 'https://mockapi.io/projects/63676ecaf5f549f052d54efd',
+            url: 'https://636a3113b10125b78fd342a4.mockapi.io/Product',
             data: spNew
         });
     }
     this.xoaSP = function(id){
         return axios({
             method: 'delete',
-            url: `https://mockapi.io/projects/63676ecaf5f549f052d54efd/${id}`
+            url: `https://636a3113b10125b78fd342a4.mockapi.io/Product/${id}`
         });
     }
     this.xemSP = function(id){
         return axios({
             method: 'get',
-            url: `https://mockapi.io/projects/63676ecaf5f549f052d54efd/${id}`,
+            url: `https://636a3113b10125b78fd342a4.mockapi.io/Product/${id}`,
         
         });
     }
     this.capNhatSP = function(id, newData){
         return axios({
             method: 'put',
-            url: `https://mockapi.io/projects/63676ecaf5f549f052d54efd/${id}`,
+            url: `https://636a3113b10125b78fd342a4.mockapi.io/Product/${id}`,
             data: newData
           });
     }
